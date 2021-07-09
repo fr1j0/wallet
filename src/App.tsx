@@ -1,17 +1,16 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
-import Home from "./routes/home";
+import { BrowserRouter as Router } from "react-router-dom";
+import Header from "./components/header";
+import RouteContent from "./components/route-content";
+import Sidebar from "./components/sidebar";
 
 function App() {
   return (
     <div className="App">
       <Router>
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-        </Switch>
+        <Header></Header>
+        <Sidebar />
+        <RouteContent />
       </Router>
     </div>
   );
