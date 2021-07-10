@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { ReactComponent as HomeIcon } from "../../assets/icon-home.svg";
+import { ReactComponent as DepositIcon } from "../../assets/icon-deposit.svg";
 import { ReactComponent as ExchangeIcon } from "../../assets/icon-exchange.svg";
 import { ReactComponent as TransactionsIcon } from "../../assets/icon-transactions.svg";
 
@@ -17,6 +18,16 @@ const Sidebar = () => {
             title="home"
           >
             <HomeIcon />
+          </NavLink>
+        </li>
+        <li className="hover:bg-gray-500 h-14 w-full">
+          <NavLink
+            to="/deposit"
+            className="w-full h-full flex items-center justify-center"
+            activeClassName="border-l-4"
+            title="deposit"
+          >
+            <DepositIcon className="w-7" />
           </NavLink>
         </li>
         <li className="hover:bg-gray-500 h-14 w-full">

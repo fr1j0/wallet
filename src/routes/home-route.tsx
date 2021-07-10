@@ -1,10 +1,10 @@
 import React from "react";
-import Deposit from "../components/deposit";
+import Dashboard from "../components/dashboard";
 
 // Template for home page
 
 const HomeRoute = () => {
-  return <Deposit />;
+  return <Dashboard />;
 };
 
 export default HomeRoute;
