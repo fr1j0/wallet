@@ -4,7 +4,7 @@ import Pod from "../pod";
 const Deposit = () => {
   return (
     <Pod title="Deposit" description="Select currency and payment method">
-      <div className="w-full rounded-2xl py-3 px-4 bg-blue-200 shadow-inner">
+      <div className="w-full rounded-2xl py-3 px-4 bg-blue-100 bg-opacity-50 shadow-innerpod">
         <div className="w-full text-sm mb-3">Amount</div>
         <div className="w-full text-4xl font-bold text-gray-600 flex justify-between">
           <input
@@ -28,7 +28,7 @@ const Deposit = () => {
           </select>
         </div>
       </div>
-      <button className="w-full mt-4 bg-blue-600 text-sm text-white p-4 rounded-2xl font-semibold">
+      <button className="w-full mt-4 bg-green-400 text-sm text-white p-4 rounded-2xl font-semibold">
         Deposit
       </button>
     </Pod>

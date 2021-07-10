@@ -5,7 +5,7 @@ import { ReactComponent as ArrowIcon } from "../../assets/icon-arrow.svg";
 const Exchange = () => {
   return (
     <Pod title="Exchange" description="Trade currencies">
-      <div className="w-full rounded-2xl py-3 px-4 bg-blue-200 shadow-inner">
+      <div className="w-full rounded-2xl py-3 px-4 bg-blue-100 bg-opacity-50 shadow-innerpod">
         <div className="w-full text-sm mb-3">From</div>
         <div className="w-full text-4xl font-bold text-gray-600 flex justify-between">
           <input
@@ -32,7 +32,7 @@ const Exchange = () => {
       <div className="w-full flex justify-center my-4">
         <ArrowIcon />
       </div>
-      <div className="w-full rounded-2xl py-3 px-4 bg-blue-200 shadow-inner">
+      <div className="w-full rounded-2xl py-3 px-4 bg-blue-100 bg-opacity-50 shadow-innerpod">
         <div className="w-full text-sm mb-3">To</div>
         <div className="w-full text-4xl font-bold text-gray-600 flex justify-between">
           <input
