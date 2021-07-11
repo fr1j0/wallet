@@ -16,7 +16,7 @@ const Deposit = () => {
           />
           <select
             name="currency"
-            className="text-lg bg-transparent focus:outline-none"
+            className="text-sm bg-transparent focus:outline-none"
           >
             <option value="" disabled selected>
               currency
@@ -28,7 +28,7 @@ const Deposit = () => {
           </select>
         </div>
       </div>
-      <button className="w-full mt-4 bg-purple-700 text-sm text-white p-4 rounded-2xl font-semibold">
+      <button className="w-full mt-6 bg-purple-700 text-sm text-white p-4 rounded-2xl font-semibold">
         Deposit
       </button>
     </Pod>

@@ -10,14 +10,12 @@ const Exchange = () => {
         <div className="w-full text-4xl font-bold text-gray-600 flex justify-between">
           <input
             type="number"
-            min="1"
-            max="100000"
             className="appearance-none bg-transparent border-none shadow-none w-4/5 py-2 pr-3 text-gray-700 leading-tight focus:outline-none"
             placeholder="0.0"
           />
           <select
             name="currency"
-            className="text-lg bg-transparent focus:outline-none"
+            className="text-sm bg-transparent focus:outline-none"
           >
             <option value="" disabled selected>
               currency
@@ -29,7 +27,7 @@ const Exchange = () => {
           </select>
         </div>
       </div>
-      <div className="w-full flex justify-center my-4">
+      <div className="w-full flex justify-center my-2">
         <ArrowIcon />
       </div>
       <div className="w-full rounded-2xl py-3 px-4 bg-blue-100 bg-opacity-50 shadow-innerpod">
@@ -44,7 +42,7 @@ const Exchange = () => {
           />
           <select
             name="currency"
-            className="text-lg bg-transparent focus:outline-none"
+            className="text-sm bg-transparent focus:outline-none"
           >
             <option value="" disabled selected>
               currency

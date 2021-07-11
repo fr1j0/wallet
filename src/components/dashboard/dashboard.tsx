@@ -19,7 +19,7 @@ const Dashboard = () => {
             <span className="text-sm font-normal">default:</span>
             <select
               name="currency"
-              className="text-lg bg-transparent focus:outline-none"
+              className="text-sm bg-transparent focus:outline-none"
             >
               <option value="eur">EUR</option>
               <option value="usd">USD</option>
@@ -29,7 +29,8 @@ const Dashboard = () => {
           </span>
         </div>
       </div>
-      <div className="w-full rounded-2xl py-3 pl-4 bg-blue-100 bg-opacity-50 shadow-innerpod mt-8">
+      <div className="w-full flex justify-center my-4"></div>
+      <div className="w-full rounded-2xl py-3 pl-4 bg-blue-100 bg-opacity-50 shadow-innerpod">
         <div className="w-full text-sm mb-3">Accounts</div>
         <div className="w-full max-h-40 scrollbar-thin scrollbar-thumb-blue-700 scrollbar-track-blue-300 overflow-y-scroll scrollbar-thumb-rounded-full scrollbar-track-rounded-full">
           <div className="w-full pr-4 text-lg font-medium text-gray-600 flex justify-between">
