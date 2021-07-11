@@ -28,7 +28,7 @@ const Deposit = () => {
           </select>
         </div>
       </div>
-      <button className="w-full mt-4 bg-green-400 text-sm text-white p-4 rounded-2xl font-semibold">
+      <button className="w-full mt-4 bg-purple-700 text-sm text-white p-4 rounded-2xl font-semibold">
         Deposit
       </button>
     </Pod>

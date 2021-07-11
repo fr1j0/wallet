@@ -11,7 +11,7 @@ const Header = () => {
       <div className="ml-6 md:ml-12 flex items-end">
         <KoalaIcon className="w-8 h-8 mr-2" />
         <span className="text-blue-900">panda</span>
-        <span className="text-gray-400">wallet</span>
+        <span className="text-gray-700">wallet</span>
       </div>
     </header>
   );

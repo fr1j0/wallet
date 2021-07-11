@@ -7,47 +7,47 @@ import { ReactComponent as TransactionsIcon } from "../../assets/icon-transactio
 
 const Sidebar = () => {
   return (
-    <nav className="hidden md:block fixed h-full w-14 pt-16">
+    <nav className="hidden md:block fixed h-full w-16 pt-16">
       <ul className="flex flex-col overflow-hidden border-r-2 border-wallet-border h-full pt-4">
-        <li className="group hover:bg-gray-100 h-12 w-full">
+        <li className="hover:bg-gray-100 h-12">
           <NavLink
             exact
             to="/"
-            className="w-full h-full flex items-center justify-center"
-            activeClassName="bg-gray-300 bg-opacity-50"
+            className="h-full flex items-center justify-center border-transparent border-l-4"
+            activeClassName="bg-gray-100 border-purple-700"
             title="home"
           >
-            <HomeIcon className="fill-current text-gray-500" />
+            <HomeIcon className="fill-current text-gray-700" />
           </NavLink>
         </li>
-        <li className="group hover:bg-gray-100 h-12 w-full">
+        <li className="hover:bg-gray-100 h-12">
           <NavLink
             to="/deposit"
-            className="w-full h-full flex items-center justify-center"
-            activeClassName="bg-gray-300 bg-opacity-50"
+            className="h-full flex items-center justify-center border-transparent border-l-4"
+            activeClassName="bg-gray-100 border-purple-700"
             title="deposit"
           >
-            <DepositIcon className="w-5 fill-current text-gray-500" />
+            <DepositIcon className="w-5 fill-current text-gray-700" />
           </NavLink>
         </li>
-        <li className="group hover:bg-gray-100 h-12 w-full">
+        <li className="hover:bg-gray-100 h-12">
           <NavLink
             to="/exchange"
-            className="w-full h-full flex items-center justify-center"
-            activeClassName="bg-gray-300 bg-opacity-50"
+            className="h-full flex items-center justify-center border-transparent border-l-4"
+            activeClassName="bg-gray-100 border-purple-700"
             title="exchange"
           >
-            <ExchangeIcon className="fill-current text-gray-500" />
+            <ExchangeIcon className="fill-current text-gray-700" />
           </NavLink>
         </li>
-        <li className="group hover:bg-gray-100 h-12 w-full">
+        <li className="hover:bg-gray-100 h-12">
           <NavLink
             to="/transactions"
-            className="w-full h-full flex items-center justify-center"
-            activeClassName="bg-gray-300 bg-opacity-50"
+            className="h-full flex items-center justify-center border-transparent border-l-4"
+            activeClassName="bg-gray-100 border-purple-700"
             title="transactions"
           >
-            <TransactionsIcon className="fill-current text-gray-500" />
+            <TransactionsIcon className="fill-current text-gray-700" />
           </NavLink>
         </li>
       </ul>
