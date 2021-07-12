@@ -1,12 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { Currency } from "./currencyReducer";
 
-type Config = {
-  defaultCurrency: Currency;
+export type Config = {
+  defaultCurrency: string;
 };
 
 const initialState: Config = {
-  defaultCurrency: { EUR: 1.24 },
+  defaultCurrency: "EUR",
 };
 
 const configSlice = createSlice({

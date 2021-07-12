@@ -1,20 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export type Currency = {
-  [key: string]: number;
-};
+export type Currency = { id: string; ratio: number; symbol: string };
 
-const initialState: Currency[] = [];
+const initialState: { value: Currency[] } = { value: [] };
 
 const currencySlice = createSlice({
   name: "currency",
   initialState,
   reducers: {
-    increment(state) {
-      state.push({ asd: 1 });
+    set(state, { payload }) {
+      state.value = payload;
     },
   },
 });
 
-export const { increment } = currencySlice.actions;
+export const { set } = currencySlice.actions;
 export default currencySlice.reducer;

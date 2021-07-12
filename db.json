@@ -1,0 +1,13 @@
+{
+  "currency": [
+    { "id": "USD", "ratio": 1.24, "symbol": "$" },
+    { "id": "EUR", "ratio": 1, "symbol": "€" },
+    { "id": "CHF", "ratio": 1.09, "symbol": "CHF" }
+  ],
+  "accounts": [
+    { "id": "USD", "balance": 0 },
+    { "id": "EUR", "balance": 0 },
+    { "id": "CHF", "balance": 0 }
+  ],
+  "config": { "defaultCurrency": "EUR" }
+}

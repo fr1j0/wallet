@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-type Account = {
+export type Account = {
   [key: string]: number;
 };
 
