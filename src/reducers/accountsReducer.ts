@@ -1,20 +1,46 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { RootState } from "./rootReducer";
+
+export type RequestStatus = "pending" | "fulfilled" | "rejected" | "";
+
+export const fetchAccounts = createAsyncThunk(
+  "accounts/fetchAccounts",
+  async () => {
+    const response = await fetch("http://localhost:4000/accounts");
+    return response.json();
+  }
+);
 
 export type Account = {
-  [key: string]: number;
+  id: string;
+  balance: number;
 };
 
-const initialState: Account[] = [];
+export type Accounts = {
+  list: Account[];
+  status: RequestStatus;
+};
+
+const initialState: Accounts = { list: [], status: "" };
 
 const accountsSlice = createSlice({
   name: "accounts",
   initialState,
-  reducers: {
-    increment(state) {
-      state.push({ asd: 1 });
-    },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(fetchAccounts.pending, (state, action) => {
+      state.status = "pending";
+    });
+    builder.addCase(fetchAccounts.fulfilled, (state, { payload }) => {
+      state.list = payload;
+      state.status = "fulfilled";
+    });
+    builder.addCase(fetchAccounts.rejected, (state, action) => {
+      state.status = "rejected";
+    });
   },
 });
 
-export const { increment } = accountsSlice.actions;
+export const selectAccounts = ({ accounts }: RootState) => accounts;
+
 export default accountsSlice.reducer;

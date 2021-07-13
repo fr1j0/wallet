@@ -23,6 +23,7 @@
   "scripts": {
     "start": "craco start",
     "build": "craco build",
+    "dev": "concurrently \"yarn start\" \"yarn json-server\"",
     "test": "craco test",
     "eject": "react-scripts eject",
     "check-types": "tsc --pretty --noEmit",
@@ -31,7 +32,7 @@
     "format": "prettier --write .",
     "test-all": "yarn check-format && yarn check-lint && yarn check-types && yarn build",
     "prepare": "husky install",
-    "apiserver": "json-server --watch --port 4000 db.json"
+    "json-server": "json-server --watch --port 4000 db.json"
   },
   "eslintConfig": {
     "extends": [
@@ -56,6 +57,7 @@
     "@typescript-eslint/eslint-plugin": "^4.28.2",
     "@typescript-eslint/parser": "^4.28.2",
     "autoprefixer": "^9",
+    "concurrently": "^6.2.0",
     "eslint": "^7.30.0",
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^8.3.0",

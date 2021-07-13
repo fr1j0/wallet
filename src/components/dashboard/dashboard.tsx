@@ -1,33 +1,36 @@
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { Account } from "../../reducers/accountsReducer";
-import { Config } from "../../reducers/configReducer";
+import React, { SyntheticEvent, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAccounts, selectAccounts } from "../../reducers/accountsReducer";
+import {
+  fetchConfig,
+  selectConfig,
+  updateConfig,
+} from "../../reducers/configReducer";
 import { RootState } from "../../reducers/rootReducer";
 import Pod from "../pod";
 
 const Dashboard = () => {
-  const [accounts, setAccounts] = useState<Account[]>([]);
-  const [config, setConfig] = useState<Config | null>(null);
-
+  const dispatch = useDispatch();
+  const [defaultCurrency, setDefaultCurrency] = useState("");
+  const accounts = useSelector(selectAccounts);
+  const config = useSelector(selectConfig);
   const currencies = useSelector((state: RootState) => state.currencies.value);
 
   useEffect(() => {
-    const fetchAccounts = async () => {
-      const res = await fetch("http://localhost:4000/accounts");
-      const fetchedAccounts = await res.json();
-      setAccounts(fetchedAccounts);
-    };
-    fetchAccounts();
-  }, []);
+    setDefaultCurrency(config.defaultCurrency);
+  }, [config.defaultCurrency]);
 
   useEffect(() => {
-    const fetchConfig = async () => {
-      const res = await fetch("http://localhost:4000/config");
-      const fetchedConfig = await res.json();
-      setConfig(fetchedConfig);
-    };
-    fetchConfig();
+    dispatch(fetchConfig());
+    dispatch(fetchAccounts());
   }, []);
+
+  const handleDefaultCurrencyChange = (
+    e: SyntheticEvent<HTMLSelectElement, Event>
+  ) => {
+    const newDefaultCurrency = (e.target as HTMLSelectElement).value;
+    dispatch(updateConfig({ defaultCurrency: newDefaultCurrency }));
+  };
 
   return (
     <Pod title="Dashboard" description="Accounts">
@@ -37,25 +40,20 @@ const Dashboard = () => {
           <input
             disabled
             type="number"
-            min="1"
-            max="100000"
             className="appearance-none bg-transparent border-none shadow-none w-4/5 py-2 pr-3 text-gray-700 leading-tight focus:outline-none"
             placeholder="0.0"
+            // value={totalBalance}
           />
           <span className="flex items-center">
             <span className="text-sm font-normal">default:</span>
             <select
               name="currency"
               className="text-sm bg-transparent focus:outline-none"
+              value={defaultCurrency}
+              onChange={handleDefaultCurrencyChange}
             >
               {currencies.map((currency, index) => (
-                <option
-                  key={index}
-                  value={currency.id}
-                  selected={
-                    currency.id === (config ? config.defaultCurrency : "")
-                  }
-                >
+                <option key={index} value={currency.id}>
                   {currency.id}
                 </option>
               ))}
@@ -67,7 +65,7 @@ const Dashboard = () => {
       <div className="w-full rounded-2xl py-3 pl-4 bg-blue-100 bg-opacity-50 shadow-innerpod">
         <div className="w-full text-sm mb-3">Accounts</div>
         <div className="w-full max-h-40 scrollbar-thin scrollbar-thumb-blue-700 scrollbar-track-blue-300 overflow-y-scroll scrollbar-thumb-rounded-full scrollbar-track-rounded-full">
-          {accounts.map((account, index) => {
+          {accounts.list.map((account, index) => {
             return (
               <div
                 key={index}
