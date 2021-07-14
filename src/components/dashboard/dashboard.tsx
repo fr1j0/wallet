@@ -1,35 +1,20 @@
-import React, { SyntheticEvent, useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAccounts, selectAccounts } from "../../reducers/accountsReducer";
-import {
-  fetchConfig,
-  selectConfig,
-  updateConfig,
-} from "../../reducers/configReducer";
-import { RootState } from "../../reducers/rootReducer";
+import { updateConfig } from "../../reducers/configReducer";
+import CurrencySelect from "../currencySelect";
 import Pod from "../pod";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
-  const [defaultCurrency, setDefaultCurrency] = useState("");
   const accounts = useSelector(selectAccounts);
-  const config = useSelector(selectConfig);
-  const currencies = useSelector((state: RootState) => state.currencies.value);
 
   useEffect(() => {
-    setDefaultCurrency(config.defaultCurrency);
-  }, [config.defaultCurrency]);
-
-  useEffect(() => {
-    dispatch(fetchConfig());
     dispatch(fetchAccounts());
   }, []);
 
-  const handleDefaultCurrencyChange = (
-    e: SyntheticEvent<HTMLSelectElement, Event>
-  ) => {
-    const newDefaultCurrency = (e.target as HTMLSelectElement).value;
-    dispatch(updateConfig({ defaultCurrency: newDefaultCurrency }));
+  const handleCurrencyChange = (currency: string) => {
+    dispatch(updateConfig({ defaultCurrency: currency }));
   };
 
   return (
@@ -44,21 +29,7 @@ const Dashboard = () => {
             placeholder="0.0"
             // value={totalBalance}
           />
-          <span className="flex items-center">
-            <span className="text-sm font-normal">default:</span>
-            <select
-              name="currency"
-              className="text-sm bg-transparent focus:outline-none"
-              value={defaultCurrency}
-              onChange={handleDefaultCurrencyChange}
-            >
-              {currencies.map((currency, index) => (
-                <option key={index} value={currency.id}>
-                  {currency.id}
-                </option>
-              ))}
-            </select>
-          </span>
+          <CurrencySelect onChange={handleCurrencyChange} />
         </div>
       </div>
       <div className="w-full flex justify-center my-4"></div>

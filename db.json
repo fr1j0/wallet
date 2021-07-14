@@ -31,6 +31,6 @@
     }
   ],
   "config": {
-    "defaultCurrency": "EUR"
+    "defaultCurrency": "USD"
   }
 }

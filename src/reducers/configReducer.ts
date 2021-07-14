@@ -31,7 +31,7 @@ export type Config = {
 };
 
 const initialState: Config = {
-  params: { defaultCurrency: "EUR" },
+  params: { defaultCurrency: "" },
   status: "",
 };
 
