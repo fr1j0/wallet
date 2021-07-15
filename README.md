@@ -3,8 +3,11 @@
 - React
 - Redux
 - Redux Toolbox
+- Typescript
 - Tailwind css
 - json-server
+- Prettier
+- ESLint
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
