@@ -4,6 +4,7 @@ import {
   depositCurrency,
   selectDepositStatus,
 } from "../../reducers/accountsReducer";
+import { addTransaction } from "../../reducers/transactionsReducer";
 import CurrencySelect from "../currencySelect";
 import Pod from "../pod";
 import Spinner from "../spinner";
@@ -30,6 +31,7 @@ const Deposit = () => {
     const amount: number = Number(inputRef?.current!.value);
     const currency = (currencyRef.current as HTMLSelectElement).value;
     dispatch(depositCurrency({ amount, currency }));
+    dispatch(addTransaction({ type: "deposit", amount, currency }));
   };
 
   return (

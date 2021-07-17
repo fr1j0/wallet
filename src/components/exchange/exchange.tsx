@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectConfig } from "../../reducers/configReducer";
 import useExchangedValue from "../../hooks/useExchangedValue";
 import Spinner from "../spinner";
+import { addTransaction } from "../../reducers/transactionsReducer";
 
 const Exchange = () => {
   const dispatch = useDispatch();
@@ -80,13 +81,17 @@ const Exchange = () => {
   };
 
   const doExchange = () => {
+    const amount = Number(fromValue);
     dispatch(
       exchangeCurrency({
-        amountFrom: Number(fromValue),
+        amountFrom: amount,
         amountTo: exchange,
         fromCurrency: fromAccount?.id!,
         toCurrency: toAccount?.id!,
       })
+    );
+    dispatch(
+      addTransaction({ type: "exchange", amount, currency: fromAccount?.id! })
     );
   };
 

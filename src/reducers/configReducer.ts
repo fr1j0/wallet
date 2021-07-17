@@ -13,7 +13,7 @@ export const updateConfig = createAsyncThunk(
     const { config } = getState() as RootState;
 
     const response = await fetch("http://localhost:4000/config/", {
-      method: "PUT",
+      method: "PATCH",
       body: JSON.stringify({ ...config.params, ...obj }),
       headers: {
         "Content-Type": "application/json",
