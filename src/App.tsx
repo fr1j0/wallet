@@ -3,6 +3,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Header from "./components/header";
 import RouteContent from "./components/routeContent";
 import Sidebar from "./components/sidebar";
+import { fetchAccounts } from "./reducers/accountsReducer";
 import { fetchConfig } from "./reducers/configReducer";
 import { fetchCurrencies } from "./reducers/currencyReducer";
 import { useAppDispatch } from "./store";
@@ -13,6 +14,7 @@ function App() {
   useEffect(() => {
     dispatch(fetchConfig());
     dispatch(fetchCurrencies());
+    dispatch(fetchAccounts());
   }, []);
 
   return (

@@ -4,11 +4,12 @@ import { selectConfig } from "../../reducers/configReducer";
 import { selectCurrencies } from "../../reducers/currencyReducer";
 
 type Props = {
+  disabled?: boolean;
   refEl?: LegacyRef<HTMLSelectElement>;
   onChange?: (currency: string) => void;
 };
 
-const CurrencySelect = ({ onChange, refEl }: Props) => {
+const CurrencySelect = ({ disabled, onChange, refEl }: Props) => {
   const config = useSelector(selectConfig);
   const currencies = useSelector(selectCurrencies);
   const [defaultCurrency, setDefaultCurrency] = useState("");
@@ -27,13 +28,14 @@ const CurrencySelect = ({ onChange, refEl }: Props) => {
 
   return (
     <span className="flex items-end pb-3">
-      <span className="text-sm font-normal">default:</span>
+      {disabled ? "" : <span className="text-sm font-normal">default:</span>}
       <select
         ref={refEl}
         name="currency"
         className="text-sm bg-transparent focus:outline-none"
         value={defaultCurrency}
         onChange={handleOnchange}
+        disabled={disabled}
       >
         {currencies.map((currency, index) => (
           <option key={index} value={currency.id}>

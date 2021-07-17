@@ -36,6 +36,52 @@ export const depositCurrency = createAsyncThunk<
   }
 );
 
+export const withdrawCurrency = createAsyncThunk<
+  void,
+  { amount: number; currency: string }
+>(
+  "accounts/deposit",
+  async ({ amount, currency }: { amount: number; currency: string }) => {
+    const account = await fetch(`http://localhost:4000/accounts/${currency}`);
+    const accountContent = await account.json();
+    const newBalance = {
+      ...accountContent,
+      balance: accountContent.balance - amount,
+    };
+
+    const response = await fetch(`http://localhost:4000/accounts/${currency}`, {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      method: "PATCH",
+      body: JSON.stringify(newBalance),
+    });
+    return response.json();
+  }
+);
+
+export const exchangeCurrency = createAsyncThunk(
+  "accounts/exchangeCurrency",
+  async (
+    {
+      amountFrom,
+      amountTo,
+      fromCurrency,
+      toCurrency,
+    }: {
+      amountFrom: number;
+      amountTo: number;
+      fromCurrency: string;
+      toCurrency: string;
+    },
+    { dispatch }
+  ) => {
+    dispatch(withdrawCurrency({ amount: amountFrom, currency: fromCurrency }));
+    dispatch(depositCurrency({ amount: amountTo, currency: toCurrency }));
+  }
+);
+
 export type Account = {
   id: string;
   balance: number;
@@ -44,9 +90,10 @@ export type Account = {
 export type Accounts = {
   list: Account[];
   status: RequestStatus;
+  exchangeStatus: RequestStatus;
 };
 
-const initialState: Accounts = { list: [], status: "" };
+const initialState: Accounts = { list: [], status: "", exchangeStatus: "" };
 
 const accountsSlice = createSlice({
   name: "accounts",
@@ -78,10 +125,21 @@ const accountsSlice = createSlice({
         state.status = "rejected";
       }
     );
+    builder.addMatcher(isAnyOf(exchangeCurrency.pending), (state, action) => {
+      state.exchangeStatus = "pending";
+    });
+    builder.addMatcher(isAnyOf(exchangeCurrency.fulfilled), (state, action) => {
+      state.exchangeStatus = "fulfilled";
+    });
+    builder.addMatcher(isAnyOf(exchangeCurrency.rejected), (state, action) => {
+      state.exchangeStatus = "rejected";
+    });
   },
 });
 
 export const selectAccounts = ({ accounts }: RootState) => accounts;
 export const selectDepositStatus = ({ accounts }: RootState) => accounts.status;
+export const selectExchangeStatus = ({ accounts }: RootState) =>
+  accounts.exchangeStatus;
 
 export default accountsSlice.reducer;

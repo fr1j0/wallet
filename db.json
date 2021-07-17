@@ -19,11 +19,11 @@
   "accounts": [
     {
       "id": "USD",
-      "balance": 127
+      "balance": 429.79999999999995
     },
     {
       "id": "EUR",
-      "balance": 13
+      "balance": 135
     },
     {
       "id": "CHF",

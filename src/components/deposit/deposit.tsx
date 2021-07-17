@@ -26,10 +26,10 @@ const Deposit = () => {
     }
   }, [depositStatus]);
 
-  const doDeposit = async () => {
+  const doDeposit = () => {
     const amount: number = Number(inputRef?.current!.value);
     const currency = (currencyRef.current as HTMLSelectElement).value;
-    await dispatch(depositCurrency({ amount, currency }));
+    dispatch(depositCurrency({ amount, currency }));
   };
 
   return (
@@ -43,7 +43,7 @@ const Deposit = () => {
             className="appearance-none bg-transparent border-none shadow-none w-4/5 py-2 pr-3 text-gray-700 leading-tight focus:outline-none"
             placeholder="0.0"
           />
-          <CurrencySelect refEl={currencyRef} />
+          <CurrencySelect refEl={currencyRef} disabled />
         </div>
       </div>
       <button
