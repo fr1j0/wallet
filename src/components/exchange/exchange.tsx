@@ -12,8 +12,9 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { selectConfig } from "../../reducers/configReducer";
 import useExchangedValue from "../../hooks/useExchangedValue";
-import Spinner from "../spinner";
 import { addTransaction } from "../../reducers/transactionsReducer";
+import InnerPod from "../innerPod";
+import Button from "../button";
 
 const Exchange = () => {
   const dispatch = useDispatch();
@@ -41,11 +42,7 @@ const Exchange = () => {
   }, [defaultCurrency]);
 
   useEffect(() => {
-    if (exchangeStatus === "pending") {
-      setExchanging(true);
-    } else {
-      setExchanging(false);
-    }
+    setExchanging(exchangeStatus === "pending");
     if (exchangeStatus === "fulfilled") {
       setFromValue("");
       calculateExchange(0, fromAccount?.id!, fromAccount?.id!);
@@ -82,6 +79,7 @@ const Exchange = () => {
 
   const doExchange = () => {
     const amount = Number(fromValue);
+    if (amount === 0) return;
     dispatch(
       exchangeCurrency({
         amountFrom: amount,
@@ -97,49 +95,36 @@ const Exchange = () => {
 
   return (
     <Pod title="Exchange" description="Trade currencies">
-      <div className="w-full rounded-2xl py-3 px-4 bg-blue-100 bg-opacity-50 shadow-innerpod">
-        <div className="w-full text-sm mb-3">From</div>
-        <div className="w-full text-4xl font-bold text-gray-600 flex justify-between">
-          <input
-            ref={inputFromRef}
-            type="number"
-            className="appearance-none bg-transparent border-none shadow-none w-4/5 py-2 pr-3 text-gray-700 leading-tight focus:outline-none"
-            placeholder={fromAccount?.balance.toString()}
-            value={fromValue}
-            onChange={handleFromInputChange}
-          />
-          <CurrencySelect
-            refEl={currencyFromRef}
-            onChange={handleSelectFromChange}
-          />
-        </div>
-      </div>
+      <InnerPod title="From">
+        <input
+          ref={inputFromRef}
+          type="number"
+          className="appearance-none bg-transparent border-none shadow-none w-4/5 py-2 pr-3 text-gray-700 leading-tight focus:outline-none"
+          placeholder={fromAccount?.balance.toString()}
+          value={fromValue}
+          onChange={handleFromInputChange}
+        />
+        <CurrencySelect
+          refEl={currencyFromRef}
+          onChange={handleSelectFromChange}
+        />
+      </InnerPod>
       <div className="w-full flex justify-center my-2">
         <ArrowIcon />
       </div>
-      <div className="w-full rounded-2xl py-3 px-4 bg-blue-100 bg-opacity-50 shadow-innerpod">
-        <div className="w-full text-sm mb-3">To</div>
-        <div className="w-full text-4xl font-bold text-gray-600 flex justify-between">
-          <input
-            ref={inputToRef}
-            type="number"
-            className="appearance-none bg-transparent border-none shadow-none w-4/5 py-2 pr-3 text-gray-700 leading-tight focus:outline-none"
-            value={exchange.toString()}
-            disabled
-          />
-          <CurrencySelect
-            refEl={currencyToRef}
-            onChange={handleSelectToChange}
-          />
-        </div>
-      </div>
-      <button
-        className="flex items-center justify-center w-full mt-6 bg-purple-700 text-sm text-white p-4 rounded-2xl font-semibold"
-        onClick={doExchange}
-      >
-        {exchanging && <Spinner />}
+      <InnerPod title="To">
+        <input
+          ref={inputToRef}
+          type="number"
+          className="appearance-none bg-transparent border-none shadow-none w-4/5 py-2 pr-3 text-gray-700 leading-tight focus:outline-none"
+          value={exchange.toString()}
+          disabled
+        />
+        <CurrencySelect refEl={currencyToRef} onChange={handleSelectToChange} />
+      </InnerPod>
+      <Button onClick={doExchange} loading={exchanging}>
         Exchange
-      </button>
+      </Button>
     </Pod>
   );
 };

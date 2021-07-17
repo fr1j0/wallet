@@ -5,9 +5,10 @@ import {
   selectDepositStatus,
 } from "../../reducers/accountsReducer";
 import { addTransaction } from "../../reducers/transactionsReducer";
+import Button from "../button";
 import CurrencySelect from "../currencySelect";
+import InnerPod from "../innerPod";
 import Pod from "../pod";
-import Spinner from "../spinner";
 
 const Deposit = () => {
   const dispatch = useDispatch();
@@ -17,11 +18,7 @@ const Deposit = () => {
   const depositStatus = useSelector(selectDepositStatus);
 
   useEffect(() => {
-    if (depositStatus === "pending") {
-      setDepositing(true);
-    } else {
-      setDepositing(false);
-    }
+    setDepositing(depositStatus === "pending");
     if (depositStatus === "fulfilled" && inputRef.current) {
       inputRef.current.value = "";
     }
@@ -30,31 +27,25 @@ const Deposit = () => {
   const doDeposit = () => {
     const amount: number = Number(inputRef?.current!.value);
     const currency = (currencyRef.current as HTMLSelectElement).value;
+    if (amount === 0) return;
     dispatch(depositCurrency({ amount, currency }));
     dispatch(addTransaction({ type: "deposit", amount, currency }));
   };
 
   return (
     <Pod title="Deposit" description="Select currency and payment method">
-      <div className="w-full rounded-2xl py-3 px-4 bg-blue-100 bg-opacity-50 shadow-innerpod">
-        <div className="w-full text-sm mb-3">Amount</div>
-        <div className="w-full text-4xl font-bold text-gray-600 flex justify-between">
-          <input
-            ref={inputRef}
-            type="number"
-            className="appearance-none bg-transparent border-none shadow-none w-4/5 py-2 pr-3 text-gray-700 leading-tight focus:outline-none"
-            placeholder="0.0"
-          />
-          <CurrencySelect refEl={currencyRef} disabled />
-        </div>
-      </div>
-      <button
-        className="flex items-center justify-center w-full mt-6 bg-purple-700 text-sm text-white p-4 rounded-2xl font-semibold"
-        onClick={doDeposit}
-      >
-        {depositing && <Spinner />}
+      <InnerPod title="Amount">
+        <input
+          ref={inputRef}
+          type="number"
+          className="appearance-none bg-transparent border-none shadow-none w-4/5 py-2 pr-3 text-gray-700 leading-tight focus:outline-none"
+          placeholder="0.0"
+        />
+        <CurrencySelect refEl={currencyRef} disabled />
+      </InnerPod>
+      <Button onClick={doDeposit} loading={depositing}>
         Deposit
-      </button>
+      </Button>
     </Pod>
   );
 };

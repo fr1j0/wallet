@@ -19,19 +19,206 @@
   "accounts": [
     {
       "id": "USD",
-      "balance": 0
+      "balance": 16.12
     },
     {
       "id": "EUR",
-      "balance": 0
+      "balance": 259
     },
     {
       "id": "CHF",
-      "balance": 0
+      "balance": 26.16
     }
   ],
   "config": {
     "defaultCurrency": "EUR"
   },
-  "transactions": []
+  "transactions": [
+    {
+      "type": "deposit",
+      "amount": 1,
+      "currency": "EUR",
+      "id": 1
+    },
+    {
+      "type": "deposit",
+      "amount": 1,
+      "currency": "EUR",
+      "id": 2
+    },
+    {
+      "type": "deposit",
+      "amount": 1,
+      "currency": "EUR",
+      "id": 3
+    },
+    {
+      "type": "deposit",
+      "amount": 1,
+      "currency": "EUR",
+      "id": 4
+    },
+    {
+      "type": "deposit",
+      "amount": 1,
+      "currency": "EUR",
+      "id": 5
+    },
+    {
+      "type": "deposit",
+      "amount": 1,
+      "currency": "EUR",
+      "id": 6
+    },
+    {
+      "type": "exchange",
+      "amount": 1,
+      "currency": "EUR",
+      "id": 7
+    },
+    {
+      "type": "exchange",
+      "amount": 4,
+      "currency": "EUR",
+      "id": 8
+    },
+    {
+      "type": "exchange",
+      "amount": 1,
+      "currency": "EUR",
+      "id": 9
+    },
+    {
+      "type": "exchange",
+      "amount": 1,
+      "currency": "EUR",
+      "id": 10
+    },
+    {
+      "type": "exchange",
+      "amount": 1,
+      "currency": "EUR",
+      "id": 11
+    },
+    {
+      "type": "exchange",
+      "amount": 1,
+      "currency": "EUR",
+      "id": 12
+    },
+    {
+      "type": "exchange",
+      "amount": 1,
+      "currency": "EUR",
+      "id": 13
+    },
+    {
+      "type": "exchange",
+      "amount": 1,
+      "currency": "EUR",
+      "id": 14
+    },
+    {
+      "type": "exchange",
+      "amount": 1,
+      "currency": "EUR",
+      "id": 15
+    },
+    {
+      "type": "exchange",
+      "amount": 1,
+      "currency": "EUR",
+      "id": 16
+    },
+    {
+      "type": "deposit",
+      "amount": 100,
+      "currency": "EUR",
+      "id": 17
+    },
+    {
+      "type": "exchange",
+      "amount": 1,
+      "currency": "EUR",
+      "id": 18
+    },
+    {
+      "type": "exchange",
+      "amount": 1,
+      "currency": "EUR",
+      "id": 19
+    },
+    {
+      "type": "exchange",
+      "amount": 1,
+      "currency": "EUR",
+      "id": 20
+    },
+    {
+      "type": "exchange",
+      "amount": 1,
+      "currency": "EUR",
+      "id": 21
+    },
+    {
+      "type": "exchange",
+      "amount": 1,
+      "currency": "EUR",
+      "id": 22
+    },
+    {
+      "type": "exchange",
+      "amount": 1,
+      "currency": "EUR",
+      "id": 23
+    },
+    {
+      "type": "exchange",
+      "amount": 1,
+      "currency": "EUR",
+      "id": 24
+    },
+    {
+      "type": "exchange",
+      "amount": 1,
+      "currency": "EUR",
+      "id": 25
+    },
+    {
+      "type": "deposit",
+      "amount": 12,
+      "currency": "EUR",
+      "id": 26
+    },
+    {
+      "type": "exchange",
+      "amount": 1,
+      "currency": "EUR",
+      "id": 27
+    },
+    {
+      "type": "deposit",
+      "amount": 22,
+      "currency": "EUR",
+      "id": 28
+    },
+    {
+      "type": "deposit",
+      "amount": 122,
+      "currency": "EUR",
+      "id": 29
+    },
+    {
+      "type": "deposit",
+      "amount": 2,
+      "currency": "EUR",
+      "id": 30
+    },
+    {
+      "type": "exchange",
+      "amount": 1,
+      "currency": "EUR",
+      "id": 31
+    }
+  ]
 }
