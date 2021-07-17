@@ -21,9 +21,8 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "craco start",
+    "start": "concurrently \"craco start\" \"yarn json-server\"",
     "build": "craco build",
-    "dev": "concurrently \"yarn start\" \"yarn json-server\"",
     "test": "craco test",
     "eject": "react-scripts eject",
     "check-types": "tsc --pretty --noEmit",
