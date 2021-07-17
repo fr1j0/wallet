@@ -46,10 +46,13 @@ const configSlice = createSlice({
         state.status = "pending";
       }
     );
+    builder.addMatcher(isAnyOf(fetchConfig.fulfilled), (state, { payload }) => {
+      state.params.defaultCurrency = payload.defaultCurrency;
+      state.status = "fulfilled";
+    });
     builder.addMatcher(
-      isAnyOf(fetchConfig.fulfilled, updateConfig.fulfilled),
+      isAnyOf(updateConfig.fulfilled),
       (state, { payload }) => {
-        if (payload) state.params.defaultCurrency = payload.defaultCurrency;
         state.status = "fulfilled";
       }
     );

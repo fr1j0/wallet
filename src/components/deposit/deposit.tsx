@@ -1,19 +1,35 @@
-import React, { useRef } from "react";
-import { useDispatch } from "react-redux";
-import { depositCurrency } from "../../reducers/accountsReducer";
+import React, { useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  depositCurrency,
+  selectDepositStatus,
+} from "../../reducers/accountsReducer";
 import CurrencySelect from "../currencySelect";
 import Pod from "../pod";
+import Spinner from "../spinner";
 
 const Deposit = () => {
   const dispatch = useDispatch();
+  const [depositing, setDepositing] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const currencyRef = useRef<HTMLSelectElement>(null);
+  const depositStatus = useSelector(selectDepositStatus);
 
-  const doDeposit = () => {
+  useEffect(() => {
+    if (depositStatus === "pending") {
+      setDepositing(true);
+    } else {
+      setDepositing(false);
+    }
+    if (depositStatus === "fulfilled" && inputRef.current) {
+      inputRef.current.value = "";
+    }
+  }, [depositStatus]);
+
+  const doDeposit = async () => {
     const amount: number = Number(inputRef?.current!.value);
     const currency = (currencyRef.current as HTMLSelectElement).value;
-
-    dispatch(depositCurrency({ amount, currency }));
+    await dispatch(depositCurrency({ amount, currency }));
   };
 
   return (
@@ -31,9 +47,10 @@ const Deposit = () => {
         </div>
       </div>
       <button
-        className="w-full mt-6 bg-purple-700 text-sm text-white p-4 rounded-2xl font-semibold"
+        className="flex items-center justify-center w-full mt-6 bg-purple-700 text-sm text-white p-4 rounded-2xl font-semibold"
         onClick={doDeposit}
       >
+        {depositing && <Spinner />}
         Deposit
       </button>
     </Pod>

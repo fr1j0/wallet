@@ -19,11 +19,11 @@
   "accounts": [
     {
       "id": "USD",
-      "balance": 3
+      "balance": 127
     },
     {
       "id": "EUR",
-      "balance": 1
+      "balance": 13
     },
     {
       "id": "CHF",
@@ -31,6 +31,6 @@
     }
   ],
   "config": {
-    "defaultCurrency": "USD"
+    "defaultCurrency": "EUR"
   }
 }

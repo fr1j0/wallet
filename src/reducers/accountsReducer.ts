@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, isAnyOf } from "@reduxjs/toolkit";
 import { RootState } from "./rootReducer";
 
 export type RequestStatus = "pending" | "fulfilled" | "rejected" | "";
@@ -53,19 +53,35 @@ const accountsSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchAccounts.pending, (state, action) => {
-      state.status = "pending";
-    });
-    builder.addCase(fetchAccounts.fulfilled, (state, { payload }) => {
-      state.list = payload;
-      state.status = "fulfilled";
-    });
-    builder.addCase(fetchAccounts.rejected, (state, action) => {
-      state.status = "rejected";
-    });
+    builder.addMatcher(
+      isAnyOf(fetchAccounts.pending, depositCurrency.pending),
+      (state, action) => {
+        state.status = "pending";
+      }
+    );
+    builder.addMatcher(
+      isAnyOf(fetchAccounts.fulfilled),
+      (state, { payload }) => {
+        state.list = payload;
+        state.status = "fulfilled";
+      }
+    );
+    builder.addMatcher(
+      isAnyOf(depositCurrency.fulfilled),
+      (state, { payload }) => {
+        state.status = "fulfilled";
+      }
+    );
+    builder.addMatcher(
+      isAnyOf(fetchAccounts.rejected, depositCurrency.rejected),
+      (state, action) => {
+        state.status = "rejected";
+      }
+    );
   },
 });
 
 export const selectAccounts = ({ accounts }: RootState) => accounts;
+export const selectDepositStatus = ({ accounts }: RootState) => accounts.status;
 
 export default accountsSlice.reducer;
