@@ -77,7 +77,9 @@ export const exchangeCurrency = createAsyncThunk(
     },
     { dispatch }
   ) => {
-    dispatch(withdrawCurrency({ amount: amountFrom, currency: fromCurrency }));
+    await dispatch(
+      withdrawCurrency({ amount: amountFrom, currency: fromCurrency })
+    );
     dispatch(depositCurrency({ amount: amountTo, currency: toCurrency }));
   }
 );

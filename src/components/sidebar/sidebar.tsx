@@ -7,8 +7,8 @@ import { ReactComponent as TransactionsIcon } from "../../assets/icon-transactio
 
 const Sidebar = () => {
   return (
-    <nav className="hidden md:block fixed h-full w-16 pt-16">
-      <ul className="flex flex-col overflow-hidden border-r-2 border-wallet-border h-full pt-4">
+    <nav className="navigation-bar hidden md:block fixed h-full w-16 pt-16 z-10">
+      <ul className="flex flex-col overflow-hidden border-r-2 border-wallet-border h-full pt-4 bg-white">
         <li className="hover:bg-gray-100 h-12">
           <NavLink
             exact

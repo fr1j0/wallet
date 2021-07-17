@@ -7,7 +7,7 @@ import TransactionsRoute from "../../routes/transactions-route";
 
 const RouteContent = () => {
   return (
-    <div className="relative flex m-0 md:ml-16">
+    <div className="relative flex m-0 md:ml-16 z-0">
       <div className="absolute w-full h-full bg-gradient-to-br from-blue-900 via-pink-300 to-purple-900 opacity-50"></div>
       <div className="w-full h-full flex items-center justify-center min-h-screen">
         <Switch>
