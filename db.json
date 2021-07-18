@@ -19,38 +19,19 @@
   "accounts": [
     {
       "id": "USD",
-      "balance": 56
+      "balance": 0
     },
     {
       "id": "EUR",
-      "balance": 123
+      "balance": 0
     },
     {
       "id": "CHF",
-      "balance": 2133
+      "balance": 0
     }
   ],
   "config": {
     "defaultCurrency": "EUR"
   },
-  "transactions": [
-    {
-      "type": "deposit",
-      "amount": 123,
-      "currency": "EUR",
-      "id": 1
-    },
-    {
-      "type": "deposit",
-      "amount": 56,
-      "currency": "USD",
-      "id": 2
-    },
-    {
-      "type": "deposit",
-      "amount": 2133,
-      "currency": "CHF",
-      "id": 3
-    }
-  ]
+  "transactions": []
 }
