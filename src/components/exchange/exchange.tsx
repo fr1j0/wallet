@@ -16,6 +16,8 @@ import { addTransaction } from "../../reducers/transactionsReducer";
 import InnerPod from "../innerPod";
 import Button from "../button";
 
+// Exchange page content
+
 const Exchange = () => {
   const dispatch = useDispatch();
   const inputFromRef = useRef<HTMLInputElement>(null);

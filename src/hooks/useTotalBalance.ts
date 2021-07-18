@@ -4,6 +4,8 @@ import { selectAccounts } from "../reducers/accountsReducer";
 import { selectConfig } from "../reducers/configReducer";
 import store from "../store";
 
+// Calculates total balance based on user's default currency
+
 const useTotalBalance = () => {
   const config = useSelector(selectConfig);
   const accounts = useSelector(selectAccounts);
@@ -26,7 +28,9 @@ const useTotalBalance = () => {
       })
       .reduce((acc, curr) => acc + curr, 0);
 
-    return Number((totalEUR * defaultAccount?.ratio!).toFixed(3));
+    const total = Number((totalEUR * defaultAccount?.ratio!).toFixed(3));
+
+    return isNaN(total) ? 0 : total;
   };
 
   useEffect(() => {

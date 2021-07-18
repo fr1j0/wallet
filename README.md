@@ -1,5 +1,9 @@
 # Wallet
 
+Wallet app with deposit, exchange, transactions and accounts management functionalities.
+UI built on React + Redux + Redux Toolkit + Tailwind CSS.
+Data is persisted in a JSON file updated by a json-server.
+
 - React
 - Redux
 - Redux Toolbox
@@ -8,6 +12,32 @@
 - json-server
 - Prettier
 - ESLint
+
+All exchange ratios are compared to EUR (ratio property in accounts at db.json file)
+
+1 EUR - €1
+1 USD - €1.24
+1 CHF - €1.09
+
+User actions:
+
+## Dashboard:
+
+- Shows total balance based on user's default currency
+- Shows list of accounts and balance
+- User can change default currency
+
+## Deposit:
+
+- User can deposit any of the accepted currencies. No limit in the amount to deposit, middle-east style ;)
+
+## Exchange:
+
+- Use can exchange any of the accepted currencies within its current balance.
+
+## Transactions:
+
+- Shows a list of wallet transactions.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -18,17 +48,7 @@ In the project directory, you can run:
 ### `yarn start`
 
 Runs the app and json-server in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
 ### `yarn build`
 
 Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.

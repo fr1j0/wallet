@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { selectCurrencies } from "../reducers/currencyReducer";
 
+// Calculates currency exchange
+
 const useExchangedValue = () => {
   const currencies = useSelector(selectCurrencies);
   const [exchange, setExchange] = useState(0);

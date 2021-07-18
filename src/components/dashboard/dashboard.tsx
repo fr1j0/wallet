@@ -8,6 +8,8 @@ import CurrencySelect from "../currencySelect";
 import InnerPod from "../innerPod";
 import Pod from "../pod";
 
+// Dashboard page content
+
 const Dashboard = () => {
   const dispatch = useDispatch();
   const accounts = useSelector(selectAccounts);
@@ -35,7 +37,7 @@ const Dashboard = () => {
           type="number"
           className="appearance-none bg-transparent border-none shadow-none w-4/5 py-2 pr-3 text-gray-700 leading-tight focus:outline-none"
           placeholder="0.0"
-          value={totalBalance}
+          value={totalBalance ?? ""}
         />
         <CurrencySelect onChange={handleCurrencyChange} />
       </InnerPod>

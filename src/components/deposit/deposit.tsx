@@ -10,6 +10,8 @@ import CurrencySelect from "../currencySelect";
 import InnerPod from "../innerPod";
 import Pod from "../pod";
 
+// Deposit page content
+
 const Deposit = () => {
   const dispatch = useDispatch();
   const [depositing, setDepositing] = useState(false);
@@ -41,7 +43,7 @@ const Deposit = () => {
           className="appearance-none bg-transparent border-none shadow-none w-4/5 py-2 pr-3 text-gray-700 leading-tight focus:outline-none"
           placeholder="0.0"
         />
-        <CurrencySelect refEl={currencyRef} disabled />
+        <CurrencySelect refEl={currencyRef} />
       </InnerPod>
       <Button onClick={doDeposit} loading={depositing}>
         Deposit

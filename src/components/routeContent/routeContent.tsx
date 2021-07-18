@@ -5,6 +5,8 @@ import ExchangeRoute from "../../routes/exchange-route";
 import HomeRoute from "../../routes/home-route";
 import TransactionsRoute from "../../routes/transactions-route";
 
+// Renders dynamic content templates based on url.
+
 const RouteContent = () => {
   return (
     <div className="relative flex m-0 md:ml-16 z-0">

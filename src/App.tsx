@@ -8,6 +8,11 @@ import { fetchConfig } from "./reducers/configReducer";
 import { fetchCurrencies } from "./reducers/currencyReducer";
 import { useAppDispatch } from "./store";
 
+/**
+ * Usual React entry point.
+ * It holds the Router, shared UI elements and dynamic page content.
+ */
+
 function App() {
   const dispatch = useAppDispatch();
 

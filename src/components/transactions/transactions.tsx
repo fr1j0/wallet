@@ -9,6 +9,8 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import InnerPod from "../innerPod";
 
+// Transactions page content
+
 const Transactions = () => {
   const dispatch = useDispatch();
   const transactions = useSelector(selectTransactions);
