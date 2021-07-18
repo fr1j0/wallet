@@ -18,8 +18,8 @@ For the styling I chose to give a chance to Tailwind CSS and I have to admit tha
 All exchange ratios are compared to EUR (ratio property in accounts at db.json file)
 
 - 1 EUR - €1
-- 1 USD - €1.24
-- 1 CHF - €1.09
+- 1 EUR - $1.24
+- 1 EUR - CHF1.09
 
 User actions:
 
