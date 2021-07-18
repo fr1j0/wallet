@@ -2,7 +2,9 @@
 
 Wallet app with deposit, exchange, transactions and accounts management functionalities.
 UI built on React + Redux + Redux Toolkit + Tailwind CSS.
-Data is persisted in a JSON file updated by a json-server.
+Data is persisted in a JSON file and updated by a json-server.
+Formatting and static code analysis are performed by Prettier and ESLint.
+For the styling I chose to give a chance to Tailwind CSS and I have to admit that I had some good fun with it.
 
 - React
 - Redux
@@ -15,9 +17,9 @@ Data is persisted in a JSON file updated by a json-server.
 
 All exchange ratios are compared to EUR (ratio property in accounts at db.json file)
 
-1 EUR - €1
-1 USD - €1.24
-1 CHF - €1.09
+- 1 EUR - €1
+- 1 USD - €1.24
+- 1 CHF - €1.09
 
 User actions:
 
