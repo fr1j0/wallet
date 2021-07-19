@@ -24,11 +24,18 @@ const useTotalBalance = () => {
         const currency = store
           .getState()
           .currencies.list.find((curr) => curr.id === acc.id);
-        return acc.balance / currency?.ratio!;
+        return currency?.ratio! < 1
+          ? acc.balance * currency?.ratio!
+          : acc.balance / currency?.ratio!;
       })
       .reduce((acc, curr) => acc + curr, 0);
 
-    const total = Number((totalEUR * defaultAccount?.ratio!).toFixed(3));
+    const total = Number(
+      (defaultAccount?.ratio! < 1
+        ? totalEUR / defaultAccount?.ratio!
+        : totalEUR * defaultAccount?.ratio!
+      ).toFixed(3)
+    );
 
     return isNaN(total) ? 0 : total;
   };

@@ -19,8 +19,18 @@ const useExchangedValue = () => {
     const toCurrency = currencies.find(
       (currency) => currency.id === toCurrencyId
     );
-    const fromEUR = fromValue / fromCurrency?.ratio!;
-    setExchange(Number((fromEUR * toCurrency?.ratio!).toFixed(2)));
+    const fromEUR =
+      fromCurrency?.ratio! < 1
+        ? fromValue * fromCurrency?.ratio!
+        : fromValue / fromCurrency?.ratio!;
+    setExchange(
+      Number(
+        (toCurrency?.ratio! < 1
+          ? fromEUR / toCurrency?.ratio!
+          : fromEUR * toCurrency?.ratio!
+        ).toFixed(2)
+      )
+    );
   };
 
   return { exchange, calculateExchange };

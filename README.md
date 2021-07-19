@@ -21,6 +21,27 @@ All exchange ratios are compared to EUR (ratio property in accounts at db.json f
 - 1 EUR - $1.24
 - 1 EUR - CHF1.09
 
+## New currencies can be added as follows:
+
+- Edit `db.json` file adding the new `currency`entry, ratio is the exchange value to EUR :
+
+```javascript
+  {
+  "id": "AED",
+  "ratio": 0.25,
+  "symbol": "AED"
+  }
+```
+
+- Add then an account for the new currency within `accounts`:
+
+```javascript
+  {
+  "id": "AED",
+  "balance": 0
+  }
+```
+
 User actions:
 
 ## Dashboard:
