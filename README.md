@@ -4,7 +4,7 @@ Wallet app with deposit, exchange, transactions and accounts management function
 UI built on React + Redux + Redux Toolkit + Tailwind CSS.
 Data is persisted in a JSON file and updated by a json-server.
 Formatting and static code analysis are performed by Prettier and ESLint.
-For the styling I chose to give a chance to Tailwind CSS and I have to admit that I had some good fun with it.
+For the styling I chose Tailwind CSS.
 
 - React
 - Redux
