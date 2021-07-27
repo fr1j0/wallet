@@ -8,7 +8,7 @@ For the styling I chose Tailwind CSS.
 
 - React
 - Redux
-- Redux Toolbox
+- Redux Toolkit
 - Typescript
 - Tailwind css
 - json-server
